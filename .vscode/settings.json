@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "esp_spi_flash.h": "c",
+        "freertos.h": "c"
+    },
+    "C_Cpp.intelliSenseEngineFallback": "Disabled"
+}

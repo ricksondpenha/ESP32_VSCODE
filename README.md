@@ -1,4 +1,4 @@
-# Getting Stated Template for ESP32 with Visual Studio code on linux
+# Hello World Example
 
 Starts a FreeRTOS task to print "Hello World"
 
