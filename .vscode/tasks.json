@@ -4,25 +4,12 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build all and monitor",
-            "command": "make",
-            "type": "shell",
-            "args": [
-                "-j5",
-                "flash",
-                "monitor"
-            ],
-            "presentation": {
-                "reveal": "always",
-            },
-        },
-        {
-            "label": "build app",
+            "label": "make all",
             "group": "build",
             "command": "make",
             "type": "shell",
             "args": [
-                "app"
+                "-j4"
             ],
             "presentation": {
                 "reveal": "always",
@@ -41,7 +28,7 @@
             }
         },
         {
-            "label": "clean app",
+            "label": "make clean",
             "command": "make",
             "type": "shell",
             "args": [
@@ -52,7 +39,7 @@
             },
         },
         {
-            "label": "flash app",
+            "label": "make flash",
             "command": "make",
             "type": "shell",
             "args": [
@@ -63,26 +50,112 @@
             },
         },
         {
-            "label": "monitor",
-            "command": "make",
+            "label": "make monitor",
+            "type":"process",
+            "windows": {
+                "command": "c:/msys32/mingw32.exe",
+                "args": [
+                    "make",
+                    "monitor"
+                ],                    
+            },
+            "presentation": {
+                "reveal": "always",
+            },
+            "problemMatcher": []            
+        },
+        {
+            "label": "make menuconfig",
+            "type":"process",
+            "windows": {
+                "command": "C:/msys32/mingw32.exe",
+                "args": [
+                    "make",
+                    "menuconfig"
+                ]
+            },
+            "presentation": {
+                "reveal": "always",
+            },
+            "problemMatcher": []
+        }
+        ////
+        {
+            "label": "build app",
+            //"group": "build",
+            "command": "idf.py",
             "type": "shell",
             "args": [
-                "monitor"
+                "build"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "echo": true
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": "absolute",
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        {
+            "label": "clean app",
+            "command": "idf.py",
+            "type": "shell",
+            "args": [
+                "clean"
             ],
             "presentation": {
                 "reveal": "always",
             },
         },
         {
-            "label": "menuconfig",
-            "command": "make",
+            "label": "flash app",
+            "command": "idf.py",
             "type": "shell",
             "args": [
-                "menuconfig"
+                "-p","COM3","flash"
             ],
             "presentation": {
                 "reveal": "always",
             },
         },
+        {
+            "label": "monitor",
+            "type":"process",
+            "windows": {
+                "command": "",
+                "args": [
+                    "idf.py",
+                    "monitor"
+                ],
+            },
+            "presentation": {
+                "reveal": "always",
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "menuconfig",
+            "type":"shell",
+            "windows": {
+                "command": "",
+                "args": [
+                    "idf.py",
+                    "menuconfig"
+                ]
+            },
+            "presentation": {
+                "reveal": "always",
+            },
+            "problemMatcher": []
+        }
     ]
 }
